@@ -81,7 +81,7 @@ minetest.register_globalstep(function(dtime)
 			local has_pants = armor_inv:contains_item("armor", "spacesuit:pants")
 			local has_boots = armor_inv:contains_item("armor", "spacesuit:boots")
 
-			if has_helmet and has_chestplate and has_pants and has_boots then
+			if has_helmet and has_chestplate and has_pants and has_boots and player:get_breath() < 10 then
 				player:set_breath(10)
 				-- TODO: wear
 			end
