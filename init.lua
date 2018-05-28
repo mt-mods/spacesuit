@@ -83,6 +83,7 @@ minetest.register_globalstep(function(dtime)
 
 			if has_helmet and has_chestplate and has_pants and has_boots then
 				player:set_breath(10)
+				-- TODO: wear
 			end
 		end
 		timer = 0
