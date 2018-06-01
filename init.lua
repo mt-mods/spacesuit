@@ -1,30 +1,30 @@
 
 
-minetest.register_tool("spacesuit:helmet", {
+armor:register_armor("spacesuit:helmet", {
 	description = "Spacesuit Helmet",
 	inventory_image = "spacesuit_inv_helmet.png",
-	groups = {armor_head=5, armor_heal=1, armor_use=75},
+	groups = {armor_head=5, armor_heal=1, armor_use=150},
 	wear = 0,
 })
 
 minetest.register_tool("spacesuit:chestplate", {
 	description = "Spacesuit Chestplate",
 	inventory_image = "spacesuit_inv_chestplate.png",
-	groups = {armor_torso=8, armor_heal=1, armor_use=75},
+	groups = {armor_torso=8, armor_heal=1, armor_use=150},
 	wear = 0,
 })
 
 minetest.register_tool("spacesuit:pants", {
 	description = "Spacesuit Pants",
 	inventory_image = "spacesuit_inv_pants.png",
-	groups = {armor_legs=7, armor_heal=1, armor_use=75},
+	groups = {armor_legs=7, armor_heal=1, armor_use=150},
 	wear = 0,
 })
 
 minetest.register_tool("spacesuit:boots", {
 	description = "Spacesuit Boots",
 	inventory_image = "spacesuit_inv_boots.png",
-	groups = {armor_feet=4, armor_heal=1, armor_use=75},
+	groups = {armor_feet=4, armor_heal=1, armor_use=150},
 	wear = 0,
 })
 
@@ -73,7 +73,6 @@ minetest.register_globalstep(function(dtime)
 
 		for _,player in ipairs(minetest.get_connected_players()) do
 			local name = player:get_player_name()
-			local inv = player:get_inventory()
 
 			local name, armor_inv = armor.get_valid_player(armor, player, "[spacesuit]")
 			local has_helmet = armor_inv:contains_item("armor", "spacesuit:helmet")
@@ -82,8 +81,16 @@ minetest.register_globalstep(function(dtime)
 			local has_boots = armor_inv:contains_item("armor", "spacesuit:boots")
 
 			if has_helmet and has_chestplate and has_pants and has_boots and player:get_breath() < 10 then
+
+				for i, stack in pairs(armor_inv:get_list("armor")) do
+					if not stack:is_empty() then
+						local name = stack:get_name()
+						local use = minetest.get_item_group(name, "armor_use") or 0
+						armor:damage(player, i, stack, use)
+					end
+				end
+
 				player:set_breath(10)
-				-- TODO: wear
 			end
 		end
 		timer = 0
