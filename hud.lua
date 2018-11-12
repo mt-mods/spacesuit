@@ -143,6 +143,13 @@ local update_hud = function(player, has_full_suit, armor_list)
 
 end
 
+minetest.register_on_joinplayer(function(player)
+	-- reset hud 2 seconds after join
+	minetest.after(2, function()
+		remove_hud(player)
+	end)
+end)
+
 spacesuit.set_player_wearing = function(player, has_full_suit, has_helmet, armor_list)
 	local playername = player:get_player_name()
 	local hud_data = hud[playername]
