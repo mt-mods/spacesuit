@@ -143,6 +143,12 @@ local update_hud = function(player, has_full_suit, armor_list)
 
 end
 
+minetest.register_on_leaveplayer(function(player)
+	-- remove stale hud data
+	local playername = player:get_player_name()
+	hud[playername] = nil
+end)
+
 spacesuit.set_player_wearing = function(player, has_full_suit, has_helmet, armor_list)
 	local playername = player:get_player_name()
 	local hud_data = hud[playername]
