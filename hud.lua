@@ -94,6 +94,10 @@ local update_hud = function(player, has_full_suit, armor_list)
 	local playername = player:get_player_name()
 	local hud_data = hud[playername]
 
+	if not hud_data then
+		return
+	end
+
 	if has_full_suit then
 		player:hud_change(hud_data.suit_incomplete, "text", "")
 	else
