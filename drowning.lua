@@ -29,7 +29,7 @@ minetest.register_globalstep(function(dtime)
 				for i, stack in pairs(armor_inv:get_list("armor")) do
 					if not stack:is_empty() then
 						local name = stack:get_name()
-						local use = minetest.get_item_group(name, "armor_use") or 0
+						local use = minetest.get_item_group(name, "armor_use") * timer or 0
 						armor:damage(player, i, stack, use)
 					end
 				end
@@ -39,10 +39,10 @@ minetest.register_globalstep(function(dtime)
 		end
 		timer = 0
 
-	        local t1 = minetest.get_us_time()
-	        local diff = t1 - t0
-	        if diff > 10000 then
-	                minetest.log("warning", "[spacesuit] update took " .. diff .. " us")
-	        end
+		local t1 = minetest.get_us_time()
+		local diff = t1 - t0
+		if diff > 10000 then
+			minetest.log("warning", "[spacesuit] update took " .. diff .. " us")
+		end
 	end
 end)

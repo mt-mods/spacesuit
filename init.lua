@@ -1,6 +1,6 @@
 
 spacesuit = {
-	armor_use = tonumber(minetest.settings:get("spacesuit.armor_use")) or 75,
+	armor_use = tonumber(minetest.settings:get("spacesuit.armor_use")) or 70,
 }
 
 
