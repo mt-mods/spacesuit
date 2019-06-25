@@ -29,8 +29,10 @@ minetest.register_globalstep(function(dtime)
 				for i, stack in pairs(armor_inv:get_list("armor")) do
 					if not stack:is_empty() then
 						local name = stack:get_name()
-						local use = minetest.get_item_group(name, "armor_use") * timer or 0
-						armor:damage(player, i, stack, use)
+						if name:sub(1, 10) == "spacesuit:" then
+  						local use = minetest.get_item_group(name, "armor_use") * timer or 0
+							armor:damage(player, i, stack, use)
+						end
 					end
 				end
 
