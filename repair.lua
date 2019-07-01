@@ -9,6 +9,9 @@ if has_vacuum then
 			recipe = {
 				"vacuum:air_bottle",
 				partname
+			},
+			replacements = {
+				{"vacuum:air_bottle", "vessels:steel_bottle"}
 			}
 		})
 	end
