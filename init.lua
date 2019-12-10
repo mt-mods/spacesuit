@@ -10,6 +10,5 @@ dofile(MP.."/suit.lua")
 dofile(MP.."/crafts.lua")
 dofile(MP.."/hud.lua")
 dofile(MP.."/drowning.lua")
-dofile(MP.."/repair.lua")
 
 print("[OK] Spacesuit")
