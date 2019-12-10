@@ -1,11 +1,10 @@
 
 # Intro
 
-Spacesuit for minetest
+Spacesuit mod for minetest
 
 # Dependencies
 * 3d_armor
-* vacuum?
 
 # Features
 * Breathe in vacuum or water

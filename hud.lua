@@ -161,9 +161,6 @@ spacesuit.set_player_wearing = function(player, has_full_suit, has_helmet, armor
 		-- player wears it
 		update_hud(player, has_full_suit, armor_list)
 
-	elseif not hud_data and not has_helmet then
-		-- player does not wear it
-
 	elseif hud_data and not has_helmet then
 		-- player stopped wearing
 		remove_hud(player)
@@ -177,5 +174,3 @@ spacesuit.set_player_wearing = function(player, has_full_suit, has_helmet, armor
 
 	end
 end
-
-

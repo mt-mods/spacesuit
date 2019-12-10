@@ -8,9 +8,7 @@ minetest.register_globalstep(function(dtime)
 		local t0 = minetest.get_us_time()
 
 		for _,player in ipairs(minetest.get_connected_players()) do
-			local name = player:get_player_name()
-
-			local name, armor_inv = armor.get_valid_player(armor, player, "[spacesuit]")
+			local _, armor_inv = armor.get_valid_player(armor, player, "[spacesuit]")
 
 			local has_helmet = armor_inv:contains_item("armor", "spacesuit:helmet")
 			local has_chestplate = armor_inv:contains_item("armor", "spacesuit:chestplate")
@@ -30,7 +28,7 @@ minetest.register_globalstep(function(dtime)
 					if not stack:is_empty() then
 						local name = stack:get_name()
 						if name:sub(1, 10) == "spacesuit:" then
-  						local use = minetest.get_item_group(name, "armor_use") * timer or 0
+							local use = minetest.get_item_group(name, "armor_use") * timer or 0
 							armor:damage(player, i, stack, use)
 						end
 					end
