@@ -36,6 +36,16 @@ minetest.register_globalstep(function(dtime)
 
 				player:set_breath(10)
 			end
+
+		-- check if player is in vacuum without spacesuit
+		local ppos = player:get_pos()
+		local is_admin = minetest.check_player_privs(player:get_player_name(), "privs")
+		local node = minetest.get_node(ppos)
+		if node.name == "vacuum:vacuum" and not has_full_suit and not is_admin then
+			-- player does not wear a suit, let him/her suffer!
+			player:set_hp( player:get_hp() - 2, "drown" )
+		end
+
 		end
 		timer = 0
 
