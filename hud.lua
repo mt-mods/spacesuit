@@ -2,7 +2,7 @@
 local HUD_POSITION = {x = 0.1, y = 0.2}
 local O2_BAR_OFFSET = {x = 0, y = 0}
 local SUITE_INCOMPLETE_OFFSET = {x = 0, y = 20}
-local HUD_ALIGNMENT = {x = 1, y = 0}
+local HUD_ALIGNMENT = { x = 1, y = 0 }
 
 local hud = {} -- playername -> data
 
@@ -14,7 +14,7 @@ local setup_hud = function(player)
 
 	hud_data.overlay = player:hud_add({
 	    hud_elem_type = "image",
-	    position = {x = 0.5, y = 0.5},
+	    position = { x = 0.5, y = 0.5 },
 	    scale = {
 	      x = -100,
 	      y = -100
@@ -37,7 +37,7 @@ local setup_hud = function(player)
 		offset = O2_BAR_OFFSET,
 		text = "spacesuit_o2_levels_fg_green.png",
 		alignment = HUD_ALIGNMENT,
-		scale = {x = 0, y = 1}
+		scale = { x = 0, y = 1 }
 	})
 
 	hud_data.o2_label = player:hud_add({
@@ -46,7 +46,7 @@ local setup_hud = function(player)
 		offset = {x = O2_BAR_OFFSET.x - 80,   y = O2_BAR_OFFSET.y},
 		text = "O2-Level:",
 		alignment = HUD_ALIGNMENT,
-		scale = {x = 100, y = 100},
+		scale = { x = 100, y = 100 },
 		number = 0x00FF00
 	})
 
@@ -56,7 +56,7 @@ local setup_hud = function(player)
 		offset = {x = O2_BAR_OFFSET.x - 70,   y = O2_BAR_OFFSET.y},
 		text = "",
 		alignment = HUD_ALIGNMENT,
-		scale = {x = 100, y = 100},
+		scale = { x = 100, y = 100 },
 		number = 0x00FF00
 	})
 
@@ -66,7 +66,7 @@ local setup_hud = function(player)
 		offset = SUITE_INCOMPLETE_OFFSET,
 		text = "",
 		alignment = HUD_ALIGNMENT,
-		scale = {x = 100, y = 100},
+		scale = { x = 100, y = 100 },
 		number = 0xFF0000
 	})
 
