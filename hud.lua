@@ -1,7 +1,9 @@
 
-local HUD_POSITION = {x = 0.1, y = 0.2}
-local O2_BAR_OFFSET = {x = 0, y = 0}
-local SUITE_INCOMPLETE_OFFSET = {x = 0, y = 20}
+local HUD_POSITION = { x = 0.09, y = 0.4 }
+local OFFSET_LABEL = { x = 0, y = -16 }
+local OFFSET_LEVEL = { x = 0, y = 16}
+local OFFSET_WARNING = { x = 0, y = -34 }
+local OFFSET_BAR = { x = 0, y = 0 }
 local HUD_ALIGNMENT = { x = 1, y = 0 }
 
 local hud = {} -- playername -> data
@@ -25,16 +27,16 @@ local setup_hud = function(player)
 	hud_data.o2_bg = player:hud_add({
 		hud_elem_type = "image",
 		position = HUD_POSITION,
-		offset = O2_BAR_OFFSET,
+		offset = OFFSET_BAR,
 		text = "spacesuit_o2_levels_bg.png",
 		alignment = HUD_ALIGNMENT,
-		scale = {x = -80, y = 1}
+		scale = { x = -7, y = 1 }
 	})
 
 	hud_data.o2_fg = player:hud_add({
 		hud_elem_type = "image",
 		position = HUD_POSITION,
-		offset = O2_BAR_OFFSET,
+		offset = OFFSET_BAR,
 		text = "spacesuit_o2_levels_fg_green.png",
 		alignment = HUD_ALIGNMENT,
 		scale = { x = 0, y = 1 }
@@ -43,7 +45,7 @@ local setup_hud = function(player)
 	hud_data.o2_label = player:hud_add({
 		hud_elem_type = "text",
 		position = HUD_POSITION,
-		offset = {x = O2_BAR_OFFSET.x - 80,   y = O2_BAR_OFFSET.y},
+		offset = OFFSET_LABEL,
 		text = "O2-Level:",
 		alignment = HUD_ALIGNMENT,
 		scale = { x = 100, y = 100 },
@@ -52,8 +54,8 @@ local setup_hud = function(player)
 
 	hud_data.o2_level = player:hud_add({
 		hud_elem_type = "text",
-		position = {x = 1, y = HUD_POSITION.y },
-		offset = {x = O2_BAR_OFFSET.x - 70,   y = O2_BAR_OFFSET.y},
+		position = HUD_POSITION,
+		offset = OFFSET_LEVEL,
 		text = "",
 		alignment = HUD_ALIGNMENT,
 		scale = { x = 100, y = 100 },
@@ -63,7 +65,7 @@ local setup_hud = function(player)
 	hud_data.suit_incomplete = player:hud_add({
 		hud_elem_type = "text",
 		position = HUD_POSITION,
-		offset = SUITE_INCOMPLETE_OFFSET,
+		offset = OFFSET_WARNING,
 		text = "",
 		alignment = HUD_ALIGNMENT,
 		scale = { x = 100, y = 100 },
@@ -121,7 +123,7 @@ local update_hud = function(player, has_full_suit, armor_list)
 	local factor_full = 1 - (max_wear / 65535)
 
 	player:hud_change(hud_data.o2_level, "text", math.floor(factor_full * 100) .. "%")
-	player:hud_change(hud_data.o2_fg, "scale", { x=math.floor(factor_full * -80), y=1 })
+	player:hud_change(hud_data.o2_fg, "scale", { x = math.floor(factor_full * -7), y = 1 })
 
 	local color
 
