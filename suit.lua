@@ -8,7 +8,7 @@ armor:register_armor("spacesuit:helmet", {
 	wear_represents = "spacesuit_wear",
 })
 
-minetest.register_tool("spacesuit:chestplate", {
+armor:register_armor("spacesuit:chestplate", {
 	description = "Spacesuit Chestplate",
 	inventory_image = "spacesuit_inv_chestplate.png",
 	groups = {armor_torso=8, armor_heal=1, armor_use=spacesuit.armor_use, not_repaired_by_anvil=1},
@@ -16,7 +16,7 @@ minetest.register_tool("spacesuit:chestplate", {
 	wear_represents = "spacesuit_wear",
 })
 
-minetest.register_tool("spacesuit:pants", {
+armor:register_armor("spacesuit:pants", {
 	description = "Spacesuit Pants",
 	inventory_image = "spacesuit_inv_pants.png",
 	groups = {armor_legs=7, armor_heal=1, armor_use=spacesuit.armor_use, not_repaired_by_anvil=1},
@@ -24,7 +24,7 @@ minetest.register_tool("spacesuit:pants", {
 	wear_represents = "spacesuit_wear",
 })
 
-minetest.register_tool("spacesuit:boots", {
+armor:register_armor("spacesuit:boots", {
 	description = "Spacesuit Boots",
 	inventory_image = "spacesuit_inv_boots.png",
 	groups = {armor_feet=4, armor_heal=1, armor_use=spacesuit.armor_use, not_repaired_by_anvil=1},
