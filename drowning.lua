@@ -1,6 +1,10 @@
 
 local function check_player(player, timer)
 	local _, armor_inv = armor.get_valid_player(armor, player, "[spacesuit]")
+	if not armor_inv then
+		-- inventory not found (somehow?), skip check
+		return
+	end
 
 	local has_helmet = armor_inv:contains_item("armor", "spacesuit:helmet")
 	local has_chestplate = armor_inv:contains_item("armor", "spacesuit:chestplate")
