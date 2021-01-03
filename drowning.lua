@@ -56,17 +56,9 @@ local timer = 0
 minetest.register_globalstep(function(dtime)
 	timer = timer + dtime;
 	if timer >= 2 then
-		local t0 = minetest.get_us_time()
-
 		for _,player in ipairs(minetest.get_connected_players()) do
 			check_player(player, timer)
 		end
 		timer = 0
-
-		local t1 = minetest.get_us_time()
-		local diff = t1 - t0
-		if diff > 10000 then
-			minetest.log("warning", "[spacesuit] update took " .. diff .. " us")
-		end
 	end
 end)
