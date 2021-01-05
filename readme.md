@@ -1,5 +1,7 @@
 
-# Intro
+# Spacesuit
+
+[![luacheck](https://github.com/mt-mods/spacesuit/workflows/luacheck/badge.svg)](https://github.com/mt-mods/spacesuit/actions)
 
 Spacesuit mod for minetest
 
