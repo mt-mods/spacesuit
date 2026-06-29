@@ -1,16 +1,19 @@
-
 # Spacesuit
 
 [![luacheck](https://github.com/mt-mods/spacesuit/workflows/luacheck/badge.svg)](https://github.com/mt-mods/spacesuit/actions)
+[forum topic](https://forum.luanti.org/viewtopic.php?p=185473)
 
-Spacesuit mod for minetest
+Spacesuit mod for Luanti/Minetest
 
-# Dependencies
+## Dependencies
+
 * 3d_armor
 
-# Features
+## Features
+
 * Breathe in vacuum or water
 
-# Attributions
-* Spacesuit textures: Anonymous_moose (https://forum.minetest.net/viewtopic.php?p=185473#p185473)
-* textures/spacesuit_overlay.png (https://github.com/bas080/minetest_vignette)
+## Attributions
+
+* Spacesuit textures: [Anonymous_moose](https://forum.luanti.org/memberlist.php?mode=viewprofile&u=7281)
+* textures/spacesuit_overlay.png [bas080](https://github.com/bas080/minetest_vignette)

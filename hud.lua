@@ -1,13 +1,10 @@
-
-local HUD_POSITION = { x = 0.09, y = 0.4 }
-local OFFSET_LABEL = { x = 0, y = -16 }
-local OFFSET_LEVEL = { x = 0, y = 16}
-local OFFSET_WARNING = { x = 0, y = -34 }
-local OFFSET_BAR = { x = 0, y = 0 }
-local HUD_ALIGNMENT = { x = 1, y = 0 }
-
+local HUD_POSITION = {x = 0.09, y = 0.4}
+local OFFSET_LABEL = {x = 0, y = -16}
+local OFFSET_LEVEL = {x = 0, y = 16}
+local OFFSET_WARNING = {x = 0, y = -34}
+local OFFSET_BAR = {x = 0, y = 0}
+local HUD_ALIGNMENT = {x = 1, y = 0}
 local hud = {} -- playername -> data
-
 
 local setup_hud = function(player)
 	local playername = player:get_player_name()
@@ -15,13 +12,13 @@ local setup_hud = function(player)
 	hud[playername] = hud_data
 
 	hud_data.overlay = player:hud_add({
-	    hud_elem_type = "image",
-	    position = { x = 0.5, y = 0.5 },
-	    scale = {
-	      x = -100,
-	      y = -100
-	    },
-	    text = "spacesuit_overlay.png"
+			hud_elem_type = "image",
+			position = {x = 0.5, y = 0.5},
+			scale = {
+				x = -100,
+				y = -100
+		 },
+			text = "spacesuit_overlay.png"
 	})
 
 	hud_data.o2_bg = player:hud_add({
@@ -30,7 +27,7 @@ local setup_hud = function(player)
 		offset = OFFSET_BAR,
 		text = "spacesuit_o2_levels_bg.png",
 		alignment = HUD_ALIGNMENT,
-		scale = { x = -7, y = 1 }
+		scale = {x = -7, y = 1}
 	})
 
 	hud_data.o2_fg = player:hud_add({
@@ -39,7 +36,7 @@ local setup_hud = function(player)
 		offset = OFFSET_BAR,
 		text = "spacesuit_o2_levels_fg_green.png",
 		alignment = HUD_ALIGNMENT,
-		scale = { x = 0, y = 1 }
+		scale = {x = 0, y = 1}
 	})
 
 	hud_data.o2_label = player:hud_add({
@@ -48,7 +45,7 @@ local setup_hud = function(player)
 		offset = OFFSET_LABEL,
 		text = "O2-Level:",
 		alignment = HUD_ALIGNMENT,
-		scale = { x = 100, y = 100 },
+		scale = {x = 100, y = 100},
 		number = 0x00FF00
 	})
 
@@ -58,7 +55,7 @@ local setup_hud = function(player)
 		offset = OFFSET_LEVEL,
 		text = "",
 		alignment = HUD_ALIGNMENT,
-		scale = { x = 100, y = 100 },
+		scale = {x = 100, y = 100},
 		number = 0x00FF00
 	})
 
@@ -68,10 +65,9 @@ local setup_hud = function(player)
 		offset = OFFSET_WARNING,
 		text = "",
 		alignment = HUD_ALIGNMENT,
-		scale = { x = 100, y = 100 },
+		scale = {x = 100, y = 100},
 		number = 0xFF0000
 	})
-
 end
 
 local remove_hud = function(player)
@@ -123,7 +119,7 @@ local update_hud = function(player, has_full_suit, armor_list)
 	local factor_full = 1 - (max_wear / 65535)
 
 	player:hud_change(hud_data.o2_level, "text", math.floor(factor_full * 100) .. "%")
-	player:hud_change(hud_data.o2_fg, "scale", { x = math.floor(factor_full * -7), y = 1 })
+	player:hud_change(hud_data.o2_fg, "scale", {x = math.floor(factor_full * -7), y = 1})
 
 	local color
 
@@ -141,15 +137,13 @@ local update_hud = function(player, has_full_suit, armor_list)
 		-- red
 		color = get_color(255,0,0)
 		player:hud_change(hud_data.o2_fg, "text", "spacesuit_o2_levels_fg_red.png")
-
 	end
 
 	player:hud_change(hud_data.o2_label, "number", color)
 	player:hud_change(hud_data.o2_level, "number", color)
-
 end
 
-minetest.register_on_leaveplayer(function(player)
+core.register_on_leaveplayer(function(player)
 	-- remove stale hud data
 	local playername = player:get_player_name()
 	hud[playername] = nil
@@ -170,9 +164,8 @@ spacesuit.set_player_wearing = function(player, has_full_suit, has_helmet, armor
 	elseif not hud_data and has_helmet then
 		-- player started wearing
 		setup_hud(player)
-		minetest.after(0.1, function()
+		core.after(0.1, function()
 			update_hud(player, has_full_suit, armor_list)
 		end)
-
 	end
 end
