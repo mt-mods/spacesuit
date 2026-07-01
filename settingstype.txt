@@ -1,2 +1,0 @@
-# Sets how many uses you can get out of the spacesuit
-spacesuit.armor_use (Armor Use) int 70 1 65535
